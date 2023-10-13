@@ -8,6 +8,10 @@
 body {
     width: 100%;
     height: 100vh;
+}
+main {
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background: linear-gradient(45deg, #000000, rgb(44, 43, 43) 90%);
@@ -80,6 +84,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .play {
+    text-decoration: none;
     margin-top: 60px;
     width: 150px;
     height: 50px;
@@ -90,10 +95,13 @@ input[type=number]::-webkit-outer-spin-button {
     color: #8e108a;
     font-size: 24px;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 250ms ease-in;
 }
 
-.play:hover {
+.play_able:hover {
     background-color: #8e108a;
     color: white;
     cursor: pointer;
@@ -104,8 +112,14 @@ input[type=number]::-webkit-outer-spin-button {
     background: url("../assets/imgs/gengar2.gif");
     background-size: cover;
     z-index: 2;
-    transform: translate(90px, -30px);
+    transform: translate(95px, -05px);
     width: 75px;
     height: 75px;
     position: absolute;
+}
+
+.play_unable {
+    color: #8e108a53;
+    border: solid 5px #8e108a53;
+    cursor: not-allowed;
 }
