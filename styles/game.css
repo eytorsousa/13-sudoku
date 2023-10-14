@@ -22,6 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: hidden;
 }
 
 main {
@@ -97,4 +98,37 @@ main {
     margin-left: 5px;
     margin-top: 5px;
     outline: none;
+}
+
+.verify {
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    bottom: 5%;
+    align-self: center;
+    color: #8e108a;
+    border: solid 5px #8e108a;
+    box-shadow: 0px 0px 15px #943891;
+    background-color: transparent;
+    border-radius: 25px;
+    font-size: 22px;
+    font-weight: 700;
+    transition: 250ms ease-in-out;
+}
+
+.verify:hover {
+    box-shadow: 0px 0px 25px #943891ae;
+    background-color: #8e108a;
+    color: white;
+    cursor: pointer;
+}
+
+.verify::after {
+    content: '';
+    position: absolute;
+    background: url('../assets/imgs/gengar4.gif');
+    background-size: cover;
+    width: 75px;
+    height: 75px;
+    transform: translate(-15px, -36px);
 }
