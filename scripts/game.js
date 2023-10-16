@@ -30,9 +30,55 @@ for(let i = 0; i < value; i++){
     cols[i] = Array.from(document.querySelectorAll(`.n${numbers[i]}`));
 }
 
-console.log(rows);
-console.log(cols);
-console.log(blocks);
+verify.addEventListener('click', () => {
+    var win;
+    
+    win = verifyInputs(win);
 
-verify.addEventListener('click', verifyInputs());
+    if(win){
+        window.alert('Parabéns, você venceu!');
+    }
+});
 
+
+function verifyInputs(win){
+    for(let i = 0; i < blocks.length; i++){
+        if(blocks[i].value === '' || blocks[i].value === ' '){
+            window.alert("OPS!\nParece que você não preencheu todos os espaços...");
+            return false;
+        }
+    }
+
+    win = verifyRC(rows);
+    if(!win){
+        window.alert("OPS!\nParece que existem números iguais em uma mesma linha...");
+        return false;
+    }
+    win = verifyRC(cols);
+    if(!win){
+        window.alert("OPS!\nParece que existem números iguais em uma mesma coluna...");
+        return false;
+    }
+
+    return true;
+}
+
+function verifyRC(array){
+    var win;
+
+    array.forEach(list => {
+        for(let i = 0; i < list.length; i++){
+            for(let j = i + 1; j < list.length; j++){
+                if(list[i].value === list[j].value){
+                    win = false;
+                }
+            }
+        }
+    });
+
+    if(win === false){
+        return false;
+    } else {
+        return true;
+    }
+}
