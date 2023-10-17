@@ -40,7 +40,6 @@ verify.addEventListener('click', () => {
     }
 });
 
-
 function verifyInputs(win){
     for(let i = 0; i < blocks.length; i++){
         if(blocks[i].value === '' || blocks[i].value === ' '){
@@ -49,23 +48,20 @@ function verifyInputs(win){
         }
     }
 
-    win = verifyRC(rows);
-    if(!win){
-        window.alert("OPS!\nParece que existem números iguais em uma mesma linha...");
-        return false;
-    }
-    win = verifyRC(cols);
-    if(!win){
-        window.alert("OPS!\nParece que existem números iguais em uma mesma coluna...");
-        return false;
+    var rxc = [rows, cols];
+    for(let i = 0; i < 2; i++){
+        win = verifyRC(rxc[i]);
+        if(!win){
+            window.alert(`OPS!\nParece que existem números iguais em uma mesma linha ou coluna`);
+            return false;
+        }
     }
 
     return true;
 }
 
 function verifyRC(array){
-    var win;
-
+    let win;
     array.forEach(list => {
         for(let i = 0; i < list.length; i++){
             for(let j = i + 1; j < list.length; j++){
