@@ -28,6 +28,8 @@ for(let i = 0; i < value; i++){
     cols[i] = Array.from(document.querySelectorAll(`.n${numbers[i]}`));
 }
 
+setvalues();
+
 verify.addEventListener('click', () => {
     var win;
     
@@ -88,3 +90,16 @@ setInterval(() => {
         }
     });
 }, 100);
+
+
+function setvalues(){
+    rows.forEach(row => {
+        let position = Math.floor(Math.random() * value);
+        let num = Math.floor(Math.random() * value);
+        for(let i = 0; i < value; i++){
+            row[position].disabled = true;
+            row[position].value = num;
+            row[position].classList.add('blocked');
+        }
+    });
+}

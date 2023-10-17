@@ -132,3 +132,8 @@ main {
     height: 75px;
     transform: translate(-15px, -36px);
 }
+
+.blocked {
+    color: white;
+    font-weight: 700;
+}
