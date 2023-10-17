@@ -15,8 +15,6 @@ for(let i = 0; i < value; i++){
     for(let j = 0; j < value; j++){
         let block = document.createElement('input');
         block.type = 'number';
-        block.max = '9';
-        block.min = '1';
         block.classList.add('block');
         block.classList.add(`${letters[i]}`);
         block.classList.add(`n${numbers[j]}`);
@@ -78,3 +76,15 @@ function verifyRC(array){
         return true;
     }
 }
+
+setInterval(() => {
+    blocks.forEach(element => {
+        if(element.value < 1 && element.value != ''){
+            element.value = 1;
+        } else if(element.value > value && element.value != ''){
+            element.value = value;
+        } else if(element.value.length != 1){
+            element.value = '';
+        }
+    });
+}, 100);
