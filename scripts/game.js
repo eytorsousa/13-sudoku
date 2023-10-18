@@ -38,9 +38,7 @@ setInterval(() => {
 }, 100);
 
 verify.addEventListener('click', () => {
-    var win;
-    
-    win = verifyInputs(win);
+    var win = verifyInputs(win);
 
     if(win){
         window.alert('Parabéns, você venceu!');
@@ -58,10 +56,13 @@ function createArrays(){
 function setvalues(){
     rows.forEach(row => {
         let position = Math.floor(Math.random() * value);
-        let num = Math.floor(Math.random() * value);
+        let num = Math.floor(Math.random() * value+1);
+        let verify;
         for(let i = 0; i < value; i++){
             row[position].disabled = true;
             row[position].value = num;
+            verify = verifyRC(cols);
+            console.log(verify);
             row[position].classList.add('blocked');
         }
     });
@@ -89,6 +90,7 @@ function verifyInputs(win){
 
 function verifyRC(array){
     let win;
+    
     array.forEach(list => {
         for(let i = 0; i < list.length; i++){
             for(let j = i + 1; j < list.length; j++){
