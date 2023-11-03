@@ -60,13 +60,22 @@ function createArrays(){
 
 function setvalues(){
     let atualNumbers = setAtualNumbers();
+    let flag = Math.floor(Math.random() * 2);
     rows.forEach(row => {
-        let position = Math.floor(Math.random() * value);
-        let num = atualNumbers[Math.floor(Math.random() * atualNumbers.length)]; 
-        atualNumbers = removeNumber(atualNumbers, num);
-        row[position].disabled = true;
-        row[position].value = num;
-        row[position].classList.add('blocked');
+        if(flag % 2 == 0){
+            let position = Math.floor(Math.random() * value);
+            let num = atualNumbers[Math.floor(Math.random() * atualNumbers.length)]; 
+            atualNumbers = removeNumber(atualNumbers, num);
+            
+            row[position].disabled = true;
+            row[position].value = num;
+            row[position].classList.add('blocked');
+            
+            flag++;
+        } else{
+            flag++;
+        }
+        
     });
 }
 
