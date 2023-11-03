@@ -4,6 +4,11 @@ const verify = document.querySelector('.verify');
 const game = document.querySelector('.game');
 game.style.width = `calc(74px * ${value})`;
 
+if(value > 9 || value < 2){
+    window.alert('OPS! Valores inválidos de linhas e colunas!');
+    window.location.href = 'index.html';
+}
+
 var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
 var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -54,18 +59,34 @@ function createArrays(){
 }
 
 function setvalues(){
+    let atualNumbers = setAtualNumbers();
     rows.forEach(row => {
         let position = Math.floor(Math.random() * value);
-        let num = Math.floor(Math.random() * value+1);
-        let verify;
-        for(let i = 0; i < value; i++){
-            row[position].disabled = true;
-            row[position].value = num;
-            verify = verifyRC(cols);
-            console.log(verify);
-            row[position].classList.add('blocked');
-        }
+        let num = atualNumbers[Math.floor(Math.random() * atualNumbers.length)]; 
+        atualNumbers = removeNumber(atualNumbers, num);
+        row[position].disabled = true;
+        row[position].value = num;
+        row[position].classList.add('blocked');
     });
+}
+
+function setAtualNumbers(){
+    let atualNumbers = [];
+    for(let i = 0; i < value; i++){
+        atualNumbers[i] = i+1;
+    }
+
+    return atualNumbers;
+}
+
+function removeNumber(array, value){
+    let index = array.indexOf(value);
+
+    if(index !== -1){
+        array.splice(index, 1);
+    }
+
+    return array;
 }
 
 function verifyInputs(win){
